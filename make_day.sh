@@ -3,7 +3,8 @@ DAY=$1
 DAY_PAD=$(printf "%02d" $DAY)
 mkdir day$DAY_PAD
 session=$(cat session.txt)
-wget -O day$DAY_PAD/input.txt https://adventofcode.com/2019/day/$DAY/input 
+curl "http://adventofcode.com/2019/day/$DAY/input" -H "Cookie: session=$session" -o day$DAY_PAD/input.txt 
+
 cat << EOF > day$DAY_PAD/p1.py
 
 #!/usr/bin/env python3
